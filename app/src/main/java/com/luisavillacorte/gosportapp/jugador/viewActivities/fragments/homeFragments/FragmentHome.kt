@@ -21,7 +21,7 @@ import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.Hom
 import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.ImageAdapter
 import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.ImageData
 
-class FragmentHome(): Fragment(), HomeCampeonatosContract.View {
+class FragmentHome : Fragment(), HomeCampeonatosContract.View {
 
     private lateinit var presenter: HomeCampeonatosPresenter
     private lateinit var recyclerViewCampeonatos: RecyclerView
@@ -72,7 +72,9 @@ class FragmentHome(): Fragment(), HomeCampeonatosContract.View {
             campeonatosAdapter = CampeonatosAdapter(campeonatos)
             recyclerViewCampeonatos.adapter = campeonatosAdapter
         } else {
-            Toast.makeText(context, "No hay campeonatos disponibles", Toast.LENGTH_SHORT).show()
+            context?.let {
+                Toast.makeText(it, "No hay campeonatos disponibles", Toast.LENGTH_SHORT).show()
+            } ?: Log.e("HomeFragment", "Context is null, cannot show toast")
         }
     }
 
@@ -81,18 +83,17 @@ class FragmentHome(): Fragment(), HomeCampeonatosContract.View {
             imageAdapter = ImageAdapter(images)
             recyclerViewImages.adapter = imageAdapter
         } else {
-            Toast.makeText(context, "No hay imágenes disponibles", Toast.LENGTH_SHORT).show()
+            context?.let {
+                Toast.makeText(it, "No hay imágenes disponibles", Toast.LENGTH_SHORT).show()
+            } ?: Log.e("HomeFragment", "Context is null, cannot show toast")
         }
     }
 
     override fun showError(message: String) {
         context?.let {
             Toast.makeText(it, message, Toast.LENGTH_SHORT).show()
-        } ?: run {
-            Log.e("HomeFragment", "Context is null, cannot show toast")
-        }
+        } ?: Log.e("HomeFragment", "Context is null, cannot show toast")
     }
-
 
     override fun traernombre(perfilUsuarioResponse: PerfilUsuarioResponse) {
         val nombreJugador = perfilUsuarioResponse.nombres

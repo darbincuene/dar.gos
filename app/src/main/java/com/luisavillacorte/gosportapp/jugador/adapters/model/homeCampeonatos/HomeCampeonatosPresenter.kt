@@ -93,7 +93,7 @@ class HomeCampeonatosPresenter(
                     response.body()?.let { campeonatos ->
                         // Filtrar los campeonatos por los estados 'Inscripción' o 'Ejecución'
                         val campeonatosFiltrados = campeonatos.filter {
-                           it.estadoCampeonato == "Inscripcion"
+                           it.estadoCampeonato == "Ejecucion"
                         }
 
                         // Mostrar solo los campeonatos filtrados
