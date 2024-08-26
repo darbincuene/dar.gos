@@ -130,6 +130,7 @@
                         android:layout_height="wrap_content"
                         android:text="Ver detalles"
                         android:textSize="14sp"
+                        android:backgroundTint="#11A3BD"
                         android:visibility="gone" />
 
                     <Button
@@ -140,6 +141,8 @@
                         android:visibility="gone"
                         android:textStyle="bold"
                         android:textSize="14sp"
+
+                        android:backgroundTint="#11A3BD"
                         android:layout_marginStart="16dp"
                         />
                 </LinearLayout>
