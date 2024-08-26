@@ -56,5 +56,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/crearequipo"
+        android:backgroundTint="#11A3BD"
         android:contentDescription="@string/addTeam"/>
 </FrameLayout>

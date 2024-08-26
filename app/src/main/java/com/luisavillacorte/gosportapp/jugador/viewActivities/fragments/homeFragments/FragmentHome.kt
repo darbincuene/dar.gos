@@ -79,15 +79,20 @@ class FragmentHome : Fragment(), HomeCampeonatosContract.View {
     }
 
     override fun showImages(images: List<ImageData>) {
-        if (images.isNotEmpty()) {
-            imageAdapter = ImageAdapter(images)
-            recyclerViewImages.adapter = imageAdapter
+        if (isAdded) {
+            activity?.runOnUiThread {
+                if (images.isNotEmpty()) {
+                    imageAdapter = ImageAdapter(requireContext(),images)
+                    recyclerViewImages.adapter = imageAdapter
+                } else {
+                    Toast.makeText(requireContext(), "No hay imágenes disponibles", Toast.LENGTH_SHORT).show()
+                }
+            }
         } else {
-            context?.let {
-                Toast.makeText(it, "No hay imágenes disponibles", Toast.LENGTH_SHORT).show()
-            } ?: Log.e("HomeFragment", "Context is null, cannot show toast")
+            Log.e("HomeFragment", "Fragment not attached to a context")
         }
     }
+
 
     override fun showError(message: String) {
         context?.let {
