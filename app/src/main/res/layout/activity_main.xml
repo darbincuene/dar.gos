@@ -43,4 +43,12 @@
         android:backgroundTint="#11A3BD"
         android:layout_below="@id/btn_login"
         android:layout_marginTop="20dp"/>
+    <Button
+        android:id="@+id/btnlanding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Landing"
+        android:backgroundTint="#11A3BD"
+        android:layout_below="@id/btn_login"
+        android:layout_marginTop="90dp"/>
 </RelativeLayout>
