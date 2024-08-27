@@ -13,6 +13,6 @@ interface HomeApiService {
 
     @GET("/usuarios/perfil")
     fun obtenerPerfilUsuario(@Header("Authorization") token: String): Call<PerfilUsuarioResponse>
-    @GET("photo")
-    fun getImages(): Call<List<ImageData>>
+    //@GET("photo")
+    //fun getImages(): Call<List<ImageData>>
 }
