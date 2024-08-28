@@ -3,6 +3,7 @@ package com.luisavillacorte.gosportapp.jugador.viewActivities.activities.activit
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -28,10 +29,14 @@ class ActivityLanding : AppCompatActivity(), ImageContract.View {
 
         recyclerView = findViewById(R.id.recyclerViewImages)
         progressBar = findViewById(R.id.progressBar)  // Asegúrate de que esto se inicializa correctamente
-        val BotonDra:View=findViewById(R.id.botonDarbin)
+        val btnlandig:Button=findViewById(R.id.buttonlanding)
         // Configurar el RecyclerView en modo horizontal
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
+        btnlandig.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
         // Inicializar el adaptador
         imageAdapter = ImageAdapter(emptyList()) { imageData ->
             // Manejar clic en la imagen
@@ -45,10 +50,7 @@ class ActivityLanding : AppCompatActivity(), ImageContract.View {
         // Cargar las imágenes
         presenter.loadImages()
 
-        BotonDra.setOnClickListener{
-            val intent=Intent(this,MainActivity::class.java)
-            startActivity(intent)
-        }
+
     }
 
     override fun showLoading() {

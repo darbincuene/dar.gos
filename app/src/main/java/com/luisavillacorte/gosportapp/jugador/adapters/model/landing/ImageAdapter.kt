@@ -3,6 +3,7 @@ package com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -14,11 +15,14 @@ import com.luisavillacorte.gosportapp.jugador.adapters.model.landing.ImageData
 class ImageAdapter(private var imageList: List<ImageData>, private val onClick: (ImageData) -> Unit) :
     RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_image, parent, false)
         return ImageViewHolder(view)
+
     }
+
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val imageData = imageList[position]
@@ -35,12 +39,12 @@ class ImageAdapter(private var imageList: List<ImageData>, private val onClick: 
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageView: ImageView = itemView.findViewById(R.id.imageView)
-        private val textViewNombre: TextView = itemView.findViewById(R.id.textViewNombre)
-        private val textViewDescripcion: TextView = itemView.findViewById(R.id.textViewDescripcion)
+        //private val textViewNombre: TextView = itemView.findViewById(R.id.textViewNombre)
+        //private val textViewDescripcion: TextView = itemView.findViewById(R.id.textViewDescripcion)
 
         fun bind(imageData: ImageData) {
-            textViewNombre.text = imageData.Nombre
-            textViewDescripcion.text = imageData.Descripcion
+            //textViewNombre.text = imageData.Nombre
+            //textViewDescripcion.text = imageData.Descripcion
             Glide.with(itemView.context)
                 .load(imageData.ImageUrl)
                 .into(imageView)

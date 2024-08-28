@@ -7,41 +7,45 @@
     android:layout_height="match_parent"
     tools:context=".jugador.viewActivities.activities.activitiesAuth.ActivityLanding">
 
-    <Button
-        android:id="@+id/botonDarbin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registrate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"/>
-
+    <!-- RecyclerView en modo horizontal -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/botonDarbin">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="60dp"
             android:id="@+id/recyclerViewImages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="horizontal" />
     </LinearLayout>
 
+    <!-- ProgressBar para mostrar carga -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Botón al final de la pantalla -->
+    <Button
+        android:id="@+id/buttonlanding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Regístrate"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
