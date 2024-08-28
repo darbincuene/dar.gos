@@ -18,8 +18,6 @@ import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.Cam
 import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.CampeonatosAdapter
 import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.HomeCampeonatosContract
 import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.HomeCampeonatosPresenter
-import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.ImageAdapter
-import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.ImageData
 
 class FragmentHome : Fragment(), HomeCampeonatosContract.View {
 

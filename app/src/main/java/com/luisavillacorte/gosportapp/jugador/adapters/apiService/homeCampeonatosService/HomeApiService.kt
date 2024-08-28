@@ -2,7 +2,6 @@ package com.luisavillacorte.gosportapp.jugador.adapters.apiService.homeCampeonat
 
 import com.luisavillacorte.gosportapp.jugador.adapters.model.auth.PerfilUsuarioResponse
 import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.Campeonatos
-import com.luisavillacorte.gosportapp.jugador.adapters.model.homeCampeonatos.ImageData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
