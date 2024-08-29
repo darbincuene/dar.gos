@@ -61,14 +61,22 @@ class ActivityLanding : AppCompatActivity(), ImageContract.View {
         val runnable = object : Runnable {
             override fun run() {
                 if (imageAdapter.itemCount > 0) {
-                    currentPage = (currentPage + 1) % imageAdapter.itemCount
-                    recyclerView.smoothScrollToPosition(currentPage)
+                    currentPage++
+
+                    // Si currentPage es igual al número de elementos, vuelve al primer ítem
+                    if (currentPage >= imageAdapter.itemCount) {
+                        currentPage = 0
+                        recyclerView.scrollToPosition(currentPage)
+                    } else {
+                        recyclerView.smoothScrollToPosition(currentPage)
+                    }
                 }
                 handler.postDelayed(this, autoScrollInterval)
             }
         }
         handler.postDelayed(runnable, autoScrollInterval)
     }
+
 
     override fun displayImages(images: List<ImageData>) {
         imageAdapter.updateData(images)
