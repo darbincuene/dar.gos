@@ -31,7 +31,7 @@ class ActivityLanding : AppCompatActivity(), ImageContract.View {
     private lateinit var imageAdapter: ImageAdapter
     private val handler = Handler(Looper.getMainLooper())
     private var currentPage = 0
-    private val autoScrollInterval: Long = 3000 // 3 segundos
+    private val autoScrollInterval: Long = 1300 // 2 segundos
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

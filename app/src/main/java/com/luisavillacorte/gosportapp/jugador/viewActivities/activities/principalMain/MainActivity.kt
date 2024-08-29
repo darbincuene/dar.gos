@@ -18,12 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnLogin = findViewById<Button>(R.id.btn_login)
         val btnRegister = findViewById<Button>(R.id.btn_register)
-        val btnlanding=findViewById<Button>(R.id.btnlanding)
 
-        btnlanding.setOnClickListener{
-            val landingIntent = Intent(this, ActivityLanding::class.java)
-            startActivity(landingIntent)
-        }
 
 
         btnLogin.setOnClickListener {
