@@ -23,9 +23,7 @@ class FragmentHome : Fragment(), HomeCampeonatosContract.View {
 
     private lateinit var presenter: HomeCampeonatosPresenter
     private lateinit var recyclerViewCampeonatos: RecyclerView
-    //private lateinit var recyclerViewImages: RecyclerView
     private lateinit var campeonatosAdapter: CampeonatosAdapter
-    //private lateinit var imageAdapter: ImageAdapter
     private lateinit var nombrejuga: TextView
 
     override fun onCreateView(
@@ -44,7 +42,6 @@ class FragmentHome : Fragment(), HomeCampeonatosContract.View {
 
         // Configura el layout manager para mostrar los items horizontalmente
         recyclerViewCampeonatos.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        //recyclerViewImages.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         // Inicializar presenter con RetrofitInstance
         presenter = HomeCampeonatosPresenter(
@@ -54,7 +51,6 @@ class FragmentHome : Fragment(), HomeCampeonatosContract.View {
 
         presenter.getCampeonatos()
         presenter.getPerfilUsuario()
-        //presenter.getImages()
     }
 
     override fun showLoading() {
@@ -76,20 +72,6 @@ class FragmentHome : Fragment(), HomeCampeonatosContract.View {
         }
     }
 
-//    override fun showImages(images: List<ImageData>) {
-//        if (isAdded) {
-//            activity?.runOnUiThread {
-//                if (images.isNotEmpty()) {
-//                    imageAdapter = ImageAdapter(requireContext(),images)
-//                    recyclerViewImages.adapter = imageAdapter
-//                } else {
-//                    Toast.makeText(requireContext(), "No hay imágenes disponibles", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        } else {
-//            Log.e("HomeFragment", "Fragment not attached to a context")
-//        }
-//    }
 
 
     override fun showError(message: String) {

@@ -10,13 +10,11 @@ interface HomeCampeonatosContract {
         fun showCampeonatos(campeonato: List<Campeonatos>)
         fun showError(message: String)
         fun traernombre(perfilUsuarioResponse: PerfilUsuarioResponse)
-        //fun showImages(images: List<ImageData>)
     }
 
     interface Presenter {
         fun getCampeonatos()
         fun getPerfilUsuario()
-        //fun getImagenes()
 
 
     }

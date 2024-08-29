@@ -46,41 +46,6 @@ class HomeCampeonatosPresenter(
         })
     }
 
-//    override fun getImages() {
-//        view.showLoading()
-//        Log.d(TAG, "Fetching images from API")
-//        val call = apiService.getImages()
-//        call.enqueue(object : Callback<List<ImageData>> {
-//            override fun onResponse(
-//                call: Call<List<ImageData>>,
-//                response: Response<List<ImageData>>
-//            ) {
-//                if (response.isSuccessful) {
-//                    response.body()?.let {
-//                        images ->
-//                        Log.d(TAG, "Images fetched successfully: ${images.size}")
-//                        images.forEach { image ->
-//                            Log.d(TAG, "Image URL: ${image.ImageUrl}")
-//                        }
-//                        view.showImages(images)
-//                    } ?: run {
-//                        Log.d(TAG, "Response body is null")
-//                    }
-//                } else {
-//                    view.showError("Error: ${response.code()}")
-//                    Log.e(TAG, "Error response code: ${response.code()} - ${response.message()}")
-//                }
-//                view.hideLoading()
-//            }
-//
-//            override fun onFailure(call: Call<List<ImageData>>, t: Throwable) {
-//                view.hideLoading()
-//                view.showError(t.message ?: "Error desconocido")
-//                Log.e(TAG, "API call failed: ${t.message}")
-//            }
-//        })
-//    }
-
     override fun getCampeonatos() {
         view.showLoading()
         Log.d(TAG, "Fetching campeonatos from API")

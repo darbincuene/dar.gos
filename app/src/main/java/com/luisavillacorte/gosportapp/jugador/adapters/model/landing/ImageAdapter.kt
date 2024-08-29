@@ -15,19 +15,18 @@ import com.luisavillacorte.gosportapp.jugador.adapters.model.landing.ImageData
 class ImageAdapter(private var imageList: List<ImageData>, private val onClick: (ImageData) -> Unit) :
     RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_image, parent, false)
         return ImageViewHolder(view)
-
     }
-
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val imageData = imageList[position]
         holder.bind(imageData)
-        holder.itemView.setOnClickListener { onClick(imageData) }
+        holder.itemView.setOnClickListener {
+            onClick(imageData)  // Aquí llamas a la función que abrirá el modal
+        }
     }
 
     override fun getItemCount(): Int = imageList.size
@@ -39,12 +38,8 @@ class ImageAdapter(private var imageList: List<ImageData>, private val onClick: 
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageView: ImageView = itemView.findViewById(R.id.imageView)
-        //private val textViewNombre: TextView = itemView.findViewById(R.id.textViewNombre)
-        //private val textViewDescripcion: TextView = itemView.findViewById(R.id.textViewDescripcion)
 
         fun bind(imageData: ImageData) {
-            //textViewNombre.text = imageData.Nombre
-            //textViewDescripcion.text = imageData.Descripcion
             Glide.with(itemView.context)
                 .load(imageData.ImageUrl)
                 .into(imageView)
