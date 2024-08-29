@@ -3,6 +3,8 @@ package com.luisavillacorte.gosportapp.jugador.viewActivities.activities.activit
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.Window
 import android.widget.Button
@@ -27,6 +29,9 @@ class ActivityLanding : AppCompatActivity(), ImageContract.View {
     private lateinit var progressBar: ProgressBar
     private lateinit var presenter: ImagePresenter
     private lateinit var imageAdapter: ImageAdapter
+    private val handler = Handler(Looper.getMainLooper())
+    private var currentPage = 0
+    private val autoScrollInterval: Long = 3000 // 3 segundos
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +41,6 @@ class ActivityLanding : AppCompatActivity(), ImageContract.View {
         progressBar = findViewById(R.id.progressBar)
         val btnlandig: Button = findViewById(R.id.buttonlanding)
 
-        // Configurar el RecyclerView en modo horizontal
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         btnlandig.setOnClickListener {
@@ -44,21 +48,38 @@ class ActivityLanding : AppCompatActivity(), ImageContract.View {
             startActivity(intent)
         }
 
-        // Inicializar el adaptador
         imageAdapter = ImageAdapter(emptyList()) { imageData ->
-            // Mostrar el diálogo cuando se hace clic en una imagen
             showModal(imageData)
         }
         recyclerView.adapter = imageAdapter
 
-        // Instanciar el Presenter
         presenter = ImagePresenter(this)
-
-        // Cargar las imágenes
         presenter.loadImages()
     }
 
-    // Función para mostrar el diálogo modal
+    private fun startAutoScroll() {
+        val runnable = object : Runnable {
+            override fun run() {
+                if (imageAdapter.itemCount > 0) {
+                    currentPage = (currentPage + 1) % imageAdapter.itemCount
+                    recyclerView.smoothScrollToPosition(currentPage)
+                }
+                handler.postDelayed(this, autoScrollInterval)
+            }
+        }
+        handler.postDelayed(runnable, autoScrollInterval)
+    }
+
+    override fun displayImages(images: List<ImageData>) {
+        imageAdapter.updateData(images)
+        startAutoScroll() // Inicia el desplazamiento automático después de cargar las imágenes
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacksAndMessages(null) // Detener el desplazamiento automático cuando la actividad se destruye
+    }
+
     private fun showModal(imageData: ImageData) {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -83,13 +104,7 @@ class ActivityLanding : AppCompatActivity(), ImageContract.View {
         progressBar.visibility = View.GONE
     }
 
-    override fun displayImages(images: List<ImageData>) {
-        // Actualizar los datos del adaptador
-        imageAdapter.updateData(images)
-    }
-
     override fun showError(message: String) {
-        // Mostrar el mensaje de error al usuario
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
